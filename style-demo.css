@@ -1,0 +1,21 @@
+.block-slider .bx-next{
+	width: 32px;
+	height: 32px;
+	border: 1px solid #eaeaea;
+	text-align: center;
+	display: block;
+	border-radius: 50%;
+	font-size: 30px;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	line-height: 29px;
+	-moz-transition: all 0.45s ease;
+	-webkit-transition: all 0.45s ease;
+	-o-transition: all 0.45s ease;
+	-ms-transition: all 0.45s ease;
+	transition: all 0.45s ease;
+}
+
