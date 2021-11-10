@@ -73,6 +73,7 @@ if(isset($_POST["btnAdd"]))
 				$sqlstring="Insert into public.product(
 					proid, proname,prodescription, price,quantity,proimage, storeid, catid) values ('$id','$proname','$short','$price','$qty','$filePic','$store','$category')";
 					pg_query($conn,$sqlstring);
+					echo '<script>alert("Add product successful");</script>';
 					echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
 			}
 			else{

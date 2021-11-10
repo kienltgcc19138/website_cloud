@@ -125,7 +125,7 @@ include_once("connection.php");
                     <h2 class="product-wid-title">High Quality</h2>
                         <?php
 						  // 	include_once("database.php");
-		  				   	$result = pg_query($conn, "SELECT * FROM public.product where price > 500");
+		  				   	$result = pg_query($conn, "SELECT * FROM public.product where price Like '5%'");
 
 			            
 			                while($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
