@@ -86,28 +86,6 @@ include_once("connection.php");
         </div>
     </div> <!-- End main content area -->
     
-    <div class="brands-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="brand-wrapper">
-                    <h2 class="brands-session">Brand Store</h2>
-                        <div class="brand-list">
-                            <a href="#"><img src="images/brand.01.png" alt=""></a>
-                            <img src="images/brand.02.png" alt="">
-                            <img src="images/brand.03.png" alt="">
-                            <img src="images/brand.04.png" alt="">
-                            <img src="images/brand.05.png" alt="">
-                            <img src="images/brand.06.png" alt="">
-                            <img src="images/brand.07.png" alt="">
-                            <img src="images/brand.08.png" alt="">                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End brands area -->
 
     <div class="product-widget-area">
         <div class="zigzag-bottom"></div>
