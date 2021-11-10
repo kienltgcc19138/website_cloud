@@ -64,7 +64,7 @@ if(isset($_POST["btnAdd"]))
 		{
 		if($pic['size']<614400)
 		{
-			$sq="select * from public.product where proid='$id' or proname='$proname'";
+			$sq="select * FROM public.product where proid='$id' or proname='$proname'";
 			$result=pg_query($conn,$sq);
 			if(pg_num_rows($result)==0)
 			{
