@@ -21,7 +21,6 @@
             $sex =$_POST['grpRender'];
         }
 
-
         $err = "";
         if(strlen($pass1) <=5)
         {
