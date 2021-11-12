@@ -1,37 +1,17 @@
 <!-- Bootstrap -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 	<!-- <script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script> -->
-<?php
 
+<?php
 $id = $_GET['id'];
-$result = pg_query($conn, "SELECT* FROM public.product WHERE proid='{$id}'");
-$row = pg_fetch_assoc($result);
+$result = pg_query($conn, "SELECT * FROM public.product WHERE proid = '$id'");
+$row = pg_fetch_array($result);
+	$pg_category = "SELECT * FROM public.category";
+$query_category = pg_query($conn, $pg_category);
 
-include_once("connection.php");
-function bind_Category_List($conn){
-	$sqlstring="select catid, catname from public.category";
-	$result=pg_query($conn,$sqlstring);
-	echo "<select name='CategoryList' class='form-control'>
-		<option value='0'>Choose category</option>";
-		while($row= pg_fetch_array($result, NULL,PGSQL_ASSOC)){
-			echo "<option value='".$row['catid']."'>".$row['catname']."</option>";
-		} 
-		echo "</select>";
+$pg_store = "SELECT * FROM public.store";
+$query_store = pg_query($conn, $pg_store);
 
-}
-?>
-<?php
-include_once("connection.php");
-function bind_Store_List($conn){
-	$sqlstring="select storeid, storename, storeaddress from public.store";
-	$result=pg_query($conn,$sqlstring);
-	echo "<select name='StoreList' class='form-control'>
-		<option value='0'>Choose store</option>";
-		while($row= pg_fetch_array($result, NULL,PGSQL_ASSOC)){
-			echo "<option value='".$row['storeid']."'>".$row['storename']."</option>";
-		} 
-		echo "</select>";
-}
 ?>
 
 
@@ -80,6 +60,9 @@ if ($result) {
 	echo "Có lỗi xảy ra trong quá trình cập nhật. <a href='?page=product_management'>Again</a>";
 }
 ?>
+
+
+
 <div class="container">
 	<h2>Updating Product</h2>
 
@@ -127,21 +110,31 @@ if ($result) {
 
 				<div class="form-group">   
                     <label for="" class="col-sm-2 control-label">Product Store(*):  </label>
-							<div class="col-sm-10">
-							      <?php bind_Store_List($conn); ?>
-							</div>
+					<div class="col-sm-10">
+                <select class="form-control" name="CategoryList">
+                    <?php
+                    while ($row_category = pg_fetch_assoc($query_category)) { ?>
+                        <option value="<?php echo $row_category['catid']; ?>"> <?php echo $row_category['catname'] ?></option>}
+                    <?php } ?>
+                </select>
+            </div>
                 </div>  
 
                 <div class="form-group">   
                     <label for="" class="col-sm-2 control-label">Product category(*):  </label>
-							<div class="col-sm-10">
-							      <?php bind_Category_List($conn); ?>
-							</div>
+					<div class="col-sm-10">
+                <select class="form-control" name="StoreList">
+                    <?php
+                    while ($row_store = pg_fetch_assoc($query_store)) { ?>
+                        <option value="<?php echo $row_store['storeid']; ?>"> <?php echo $row_store['storename'] ?></option>}
+                    <?php } ?>
+                </select>
+            </div>
                 </div>  
                 
 				<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-						      <input type="submit"  class="btn btn-primary" name="Update" id="btnAdd" value="Add new" onclick="window.location='?page=product_management'" />
+						      <input type="submit"  class="btn btn-primary" name="Update" id="btnAdd" value="Update" onclick="window.location='?page=product_management'" />
                               <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=product_management'" />
                               	
 						</div>

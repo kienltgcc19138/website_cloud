@@ -25,8 +25,8 @@ if (isset($_POST['btnAdd'])) {
 
     copy($proimage['tmp_name'], "images/" . $proimage['name']);
     $filePic = $proimage['name'];
-    $result = pg_query($conn, "INSERT INTO public.product(proid,proname, description,price,quantity,image,cat_id,storeid)
-    VALUES({$proid},'{$proname}',{$description},{$price},'{$quantity}','{$proimage}','{$procat}','{$prostore}')");
+    $result = pg_query($conn, "INSERT INTO public.product(proid,proname,prodescription,price,quantity,proimage,catid,storeid)
+    VALUES('{$proid}','{$proname}','{$description}','{$price}',{$quantity},'{$filePic}','{$procat}','{$prostore}')");
 
     if ($result) {
         echo "Quá trình thêm mới thành công.";
@@ -35,9 +35,6 @@ if (isset($_POST['btnAdd'])) {
         echo "Có lỗi xảy ra trong quá trình thêm mới. <a href='?page=product_management'>Again</a>";
 }
 ?>
-
-
-
 
 
 
@@ -61,7 +58,7 @@ if (isset($_POST['btnAdd'])) {
 		<div class="form-group">
             <label for="lblShort" class="col-sm-2 control-label">Description(*): </label>
             <div class="col-sm-10">
-                <input type="text" name="txtShort" id="txtShort" class="form-control" placeholder="Short description" value='' />
+                <input type="text" name="txtShort" id="txtShort" class="form-control" placeholder="Description" value='' />
             </div>
         </div>
 
@@ -113,7 +110,7 @@ if (isset($_POST['btnAdd'])) {
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-			<input type="submit"  class="btn btn-primary" name="Update" id="btnAdd" value="Add new" onclick="window.location='?page=product_management'" />
+			<input type="submit"  class="btn btn-primary" name="btnAdd" id="btnAdd" value="Add new" onclick="window.location='?page=product_management'" />
             <input type="button" class="btn btn-primary" name="btnIgnore"  id="btnIgnore" value="Ignore" onclick="window.location='?page=product_management'" />
 
             </div>
