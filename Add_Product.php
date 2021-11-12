@@ -23,16 +23,16 @@ if (isset($_POST['btnAdd'])) {
     
    
 
-    copy($proimage['tmp_name'], "product_image/" . $proimage['name']);
+    copy($proimage['tmp_name'], "images/" . $proimage['name']);
     $filePic = $proimage['name'];
     $result = pg_query($conn, "INSERT INTO public.product(proid,proname, description,price,quantity,image,cat_id,storeid)
     VALUES({$proid},'{$proname}',{$description},{$price},'{$quantity}','{$proimage}','{$procat}','{$prostore}')");
 
     if ($result) {
         echo "Quá trình thêm mới thành công.";
-        echo '<meta http-equiv="refresh" content="0;URL=?page=product"/>';
+        echo '<meta http-equiv="refresh" content="0;URL=?page=product_management"/>';
     } else
-        echo "Có lỗi xảy ra trong quá trình thêm mới. <a href='?page=product'>Again</a>";
+        echo "Có lỗi xảy ra trong quá trình thêm mới. <a href='?page=product_management'>Again</a>";
 }
 ?>
 
